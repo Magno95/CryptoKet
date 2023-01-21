@@ -1,7 +1,7 @@
 
 const Home = () => (
   <div>
-    <h1 className="text-3xl font-bold underline">cio</h1>
+    <h1 className="text-3xl font-bold underline">cia</h1>
   </div>
 );
 
