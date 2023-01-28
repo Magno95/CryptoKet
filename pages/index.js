@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { Banner, CreatorCard } from '../components';
+import { Banner, CreatorCard, NFTCard } from '../components';
 
 import images from '../assets';
-import { makeId } from '../utils';
+// import { makeId } from '../utils';
 
 const Home = () => {
   const [hideButtons, setHideButtons] = useState(false);
@@ -43,7 +43,7 @@ const Home = () => {
     };
   });
 
-  const mockUsrs = ['0x232...kmmd', '0x345...klsp', '0x233...abid', '0x325...ldjn', '0x999...23md', '0x987...a8jd', '0x233...abid'];
+  const mockUsrs = ['0x232...kmmd', '0x345...klsp', '0x233...abid', '0x325...ldjn', '0x999...23md', '0x987...a8jd', '0x233...abid', '0x233...abid', '0x233...abid', '0x325...ldjn', '0x345...klsp'];
 
   return (
     <div className="flex justify-center sm:px-4 p-12">
@@ -82,6 +82,28 @@ const Home = () => {
                 </>
               )}
             </div>
+          </div>
+        </div>
+        <div className="mt-10">
+          <div className="flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start">
+            <h2 className="font-poppin flex-1 dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold sm:mb-4">Hot bids</h2>
+            <div>SearchBar</div>
+          </div>
+          <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+              <NFTCard
+                key={`nft-${i}`}
+                nft={{
+                  i,
+                  name: `NFT ${i}`,
+                  seller: mockUsrs[i],
+                  owner: mockUsrs[10 - i],
+                  price: (10 - i * 0.531).toFixed(2),
+                  description: 'Cool NFT on Sale',
+                }}
+
+              />
+            ))}
           </div>
         </div>
 

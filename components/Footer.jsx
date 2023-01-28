@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="flexStart flex-1 flex-col">
           <div className="flexCenter cursor-pointer">
             <Image src={images.logo02} objectFit="contain" width={32} height={32} alt="logo" />
-            <p className="dark:text-white text-nft-black-1 font-semibold text-lg mlm-1">
+            <p className="dark:text-white text-nft-black-1 font-semibold text-lg ml-1">
               CryptoKet
             </p>
           </div>
