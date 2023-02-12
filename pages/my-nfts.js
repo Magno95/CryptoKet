@@ -18,6 +18,14 @@ const MyNFT = () => {
       </div>
     );
   }
+
+  useEffect(() => {
+    fetchMyNFTsOrListedNFTs()
+      .then((items) => {
+        setNfts(items);
+        setIsLoading(false);
+      });
+  }, []);
   // if (!isLoading && nfts.length === 0) {
   //   return (
   //     <div className="flexCenter sm:p-4 p-16 min-h-screen">
@@ -53,7 +61,7 @@ const MyNFT = () => {
         : (
           <div className="sm:px-4 p-12 w-full minmd:w-4/5 flexCenter flex-col">
             <div className="felx-1 w-full flex flex-row sm:flex-col px-4 sx:px-0 minlg:px-8">Search Bar</div>
-            <div className="mt-3 w-full flex flex-wrap">{nfts.map((nft) => <NFTCard key={nft.token} nft={nft} />)}</div>
+            <div className="mt-3 w-full flex flex-wrap">{nfts.map((nft) => <NFTCard key={nft.tokenId} nft={nft} />)}</div>
           </div>
         )}
     </div>
