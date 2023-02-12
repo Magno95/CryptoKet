@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { Banner, CreatorCard, NFTCard } from '../components';
 
-import { NFTContext } from '@/context/NFTContext';
+import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
+import { getCreators, shortenAddress } from '../utils';
 
 const Home = () => {
   const { fetchNFTs } = useContext(NFTContext);
@@ -55,6 +56,8 @@ const Home = () => {
 
   const mockUsrs = ['0x232...kmmd', '0x345...klsp', '0x233...abid', '0x325...ldjn', '0x999...23md', '0x987...a8jd', '0x233...abid', '0x233...abid', '0x233...abid', '0x325...ldjn', '0x345...klsp'];
 
+  const creators = getCreators(nfts);
+
   return (
     <div className="flex justify-center sm:px-4 p-12">
       <div className="w-full minmd:w-4/5">
@@ -67,13 +70,22 @@ const Home = () => {
           <h1 className="font-poppin dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold ml-4 sx:ml-0">Best Creators</h1>
           <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
             <div className="flex flex-row w-max overflow-x-scroll no-scrollbar select-none" ref={scrollRef}>
-              {[6, 7, 8, 9, 10].map((i, index) => (
+              {/* {[6, 7, 8, 9, 10].map((i, index) => (
                 <CreatorCard
                   key={`creator-${i}`}
                   rank={i}
                   creatorImage={images[`creator${i}`]}
                   creatorName={`${mockUsrs[index]}`}
                   creatorEths={10 - i * 0.5}
+                />
+              ))} */}
+              {creators.map((creator, i) => (
+                <CreatorCard
+                  key={creator.seller}
+                  rank={i + 1}
+                  creatorImage={images[`creator${i + 1}`]}
+                  creatorName={shortenAddress(creator.seller)}
+                  creatorEths={creator.price}
                 />
               ))}
               {!hideButtons && (

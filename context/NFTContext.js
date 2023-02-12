@@ -1,8 +1,7 @@
-import React, { useState, useEffect, Children } from 'react';
+import React, { useState, useEffect } from 'react';
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import axios from 'axios';
-import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
@@ -13,7 +12,7 @@ const fetchContract = (signerOrProvider) => new ethers.Contract(MarketAddress, M
 export const NFTProvider = ({ children }) => {
   const nftCurrency = 'ETH';
   const [currentAccount, setCurrentAccount] = useState('');
-  const [isLoadingNFT, setIsLoadingNFT] = useState(false);
+  // const [isLoadingNFT, setIsLoadingNFT] = useState(false);
 
   const createSale = async (url, formInputPrice, isReselling, id) => {
     const web3Modal = new Web3Modal();
@@ -26,10 +25,9 @@ export const NFTProvider = ({ children }) => {
     console.log(contract);
     const listingPrice = await contract.getListingPrice();
 
-    // const transaction = !isReselling
-    //   ? await contract.createToken(url, price, { value: listingPrice.toString() })
-    //   : await contract.resellToken(id, price, { value: listingPrice.toString() });
-    const transaction = await contract.createToken(url, price, { value: listingPrice.toString() });
+    const transaction = !isReselling
+      ? await contract.createToken(url, price, { value: listingPrice.toString() })
+      : await contract.resellToken(id, price, { value: listingPrice.toString() });
 
     // setIsLoadingNFT(true);
     await transaction.wait();

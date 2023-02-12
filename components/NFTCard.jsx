@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import { NFTContext } from '../context/NFTContext';
 import images from '../assets';
-import { shortenAddress } from '@/utils';
+import { shortenAddress } from '../utils';
 
-const NFTCard = ({ nft }) => {
+const NFTCard = ({ nft, onProfilePage }) => {
   const { nftCurrency } = useContext(NFTContext);
   return (
     <Link href={{ pathname: '/nft-details', query: nft }}>
@@ -17,7 +17,7 @@ const NFTCard = ({ nft }) => {
           <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm minlg:text-xl">{nft.name}</p>
           <div className="flexBetween mt-1 minlg:mt-3 flex-row xs:flex-col xs:items-start xs:mt-3">
             <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-l">{nft.price} <span className="normal">{nftCurrency}</span></p>
-            <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-l">{nft.seller.length > 10 ? shortenAddress(nft.seller) : nft.seller}</p>
+            <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-l">{shortenAddress(onProfilePage ? nft.owner : nft.seller)}</p>
           </div>
         </div>
       </div>

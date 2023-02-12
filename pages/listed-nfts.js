@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { Loader, NFTCard } from '@/components';
-import { NFTContext } from '@/context/NFTContext';
+import { Loader, NFTCard } from '../components';
+import { NFTContext } from '../context/NFTContext';
 
 const ListedNFTs = () => {
   const { fetchMyNFTsOrListedNFTs } = useContext(NFTContext);

@@ -2,9 +2,9 @@ import { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import { Loader, NFTCard, Button, Modal } from '@/components';
-import { NFTContext } from '@/context/NFTContext';
-import { shortenAddress } from '@/utils';
+import { Loader, Button, Modal } from '../components';
+import { NFTContext } from '../context/NFTContext';
+import { shortenAddress } from '../utils';
 
 import images from '../assets';
 
@@ -99,9 +99,17 @@ const NFTDetails = () => {
                 <p className="font-poppins dark:text-white text-nft-black-1 font-normal text-base border border-gray p-2">
                   You cannot buy your own NFT
                 </p>
-              ) : (
-                <Button btnName={`Buy for ${nft.price}${nftCurrency}`} classStyles="mr-5 sm:mr-0 rounded-xl" handleClick={() => setPaymentModal(true)} />
-              )
+              ) : currentAccount === nft.owner.toLowerCase()
+                ? (
+                  <Button
+                    btnName="List on Marketplace"
+                    classStyles="mr-5 sm:mr-0 rounded-xl sm:mb-5"
+                    handleClick={() => router.push(`/resell-nft?tokenId=${nft.tokenId}&tokenURI=${nft.tokenURI}`)}
+                  />
+                )
+                : (
+                  <Button btnName={`Buy for ${nft.price}${nftCurrency}`} classStyles="mr-5 sm:mr-0 sm:mb-5 rounded-xl" handleClick={() => setPaymentModal(true)} />
+                )
           }
         </div>
       </div>
