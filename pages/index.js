@@ -5,7 +5,10 @@ import { useTheme } from 'next-themes';
 import { Banner, CreatorCard, Loader, NFTCard, SearchBar } from '../components';
 
 import { NFTContext } from '../context/NFTContext';
-import images from '../assets';
+
+import creatorNft from '../assets/creator1.png';
+import left from '../assets/left.png';
+import right from '../assets/right.png';
 import { getCreators, shortenAddress } from '../utils';
 
 const Home = () => {
@@ -114,20 +117,11 @@ const Home = () => {
               <h1 className="font-poppin dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold ml-4 sx:ml-0">Top Sellers</h1>
               <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
                 <div className="flex flex-row w-max overflow-x-scroll no-scrollbar select-none" ref={scrollRef}>
-                  {/* {[6, 7, 8, 9, 10].map((i, index) => (
-                <CreatorCard
-                  key={`creator-${i}`}
-                  rank={i}
-                  creatorImage={images[`creator${i}`]}
-                  creatorName={`${mockUsrs[index]}`}
-                  creatorEths={10 - i * 0.5}
-                />
-              ))} */}
                   {creators.map((creator, i) => (
                     <CreatorCard
                       key={creator.seller}
                       rank={i + 1}
-                      creatorImage={images[`creator${i + 1}`]}
+                      creatorImage={creatorNft}
                       creatorName={shortenAddress(creator.seller)}
                       creatorEths={creator.price}
                     />
@@ -136,12 +130,12 @@ const Home = () => {
                     <>
                       <div onClick={() => handleScroll('left')} className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer left-0">
                         <div className="relative w-full h-full">
-                          <Image src={images.left} layout="fill" objectFit="contain" alt="left_arrow" className={theme === 'light' ? 'filter invert' : ''} />
+                          <Image src={left} layout="fill" objectFit="contain" alt="left_arrow" className={theme === 'light' ? 'filter invert' : ''} />
                         </div>
                       </div>
                       <div onClick={() => handleScroll('right')} className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 cursor-pointer right-0">
                         <div className="relative w-full h-full">
-                          <Image src={images.right} layout="fill" objectFit="contain" alt="right_arrow" className={`w-8 h-8 minlg:w-12 minlg:h-12 ${theme === 'light' ? 'filter invert' : undefined}`} />
+                          <Image src={right} layout="fill" objectFit="contain" alt="right_arrow" className={`w-8 h-8 minlg:w-12 minlg:h-12 ${theme === 'light' ? 'filter invert' : undefined}`} />
                         </div>
                       </div>
 

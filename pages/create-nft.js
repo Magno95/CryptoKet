@@ -8,7 +8,7 @@ import { useTheme } from 'next-themes';
 
 import { NFTContext } from '../context/NFTContext';
 import { Button, Input, Loader } from '../components';
-import images from '../assets';
+import upload from '../assets/upload.png';
 
 const projectId = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
 const projectSecret = process.env.NEXT_PUBLIC_API_KEY_SECRET;
@@ -100,7 +100,7 @@ const CreateItem = () => {
 
                 <div className="my-12 w-full flex justify-center">
                   <Image
-                    src={images.upload}
+                    src={upload}
                     width={100}
                     height={100}
                     objectFit="contain"

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import Image from 'next/image';
 
-import images from '../assets';
+import tick from '../assets/tick.png';
 import { NFTContext } from '../context/NFTContext';
 
 const CreatorCard = ({ rank, creatorImage, creatorName, creatorEths }) => {
@@ -17,7 +17,7 @@ const CreatorCard = ({ rank, creatorImage, creatorName, creatorEths }) => {
           <div className="absolute w-4 h-4 minlg:w-7 minlg:h-7 bottom-2 -right-0">
             <div className="relative w-full h-full">
               <Image
-                src={images.tick}
+                src={tick}
                 layout="fill"
                 objectFit="contain"
                 alt="tick"

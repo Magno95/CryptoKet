@@ -2,7 +2,8 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import images from '../assets';
+import searchImg from '../assets/Search.png';
+import arrow from '../assets/arrow.png';
 
 const SearchBar = ({ activeSelect, setActiveSelect, handleSearch, clearSearch }) => {
   const [search, setSearch] = useState('');
@@ -29,7 +30,7 @@ const SearchBar = ({ activeSelect, setActiveSelect, handleSearch, clearSearch })
     <>
       <div className="flex-1 flexCenter dark:bg-nft-black-2 bg-white border dark:border-nft-black-2 border-nft-gray-2 py-3 px-4 rounded-md">
         <Image
-          src={images.search}
+          src={searchImg}
           objectFit="contain"
           width={20}
           height={20}
@@ -50,7 +51,7 @@ const SearchBar = ({ activeSelect, setActiveSelect, handleSearch, clearSearch })
       >
         <p className="font-poppins dark:text-white text-nft-black-1 font-normal text-xs">{activeSelect}</p>
         <Image
-          src={images.arrow}
+          src={arrow}
           objectFit="contain"
           width={15}
           height={15}

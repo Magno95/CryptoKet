@@ -4,7 +4,9 @@ import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import images from '../assets';
+import logo02 from '../assets/logo02.png';
+import menu from '../assets/menu.png';
+import cross from '../assets/cross.png';
 import { NFTContext } from '../context/NFTContext';
 import Button from './Button';
 
@@ -117,7 +119,7 @@ const Navbar = () => {
       <div className="flex flex-1 flex-row justify-start">
         <Link href="/">
           <div className="flexCenter md:hidden cursor-pointer" onClick={() => setActive('Explore NFTs')}>
-            <Image src={images.logo02} objectFit="contain" width={32} height={32} alt="logo" />
+            <Image src={logo02} objectFit="contain" width={32} height={32} alt="logo" />
             <p className=" dark:text-white text-nft-black-1 font-semibold text-lg ml-1">CryptoKet</p>
           </div>
         </Link>
@@ -129,7 +131,7 @@ const Navbar = () => {
               setIsOpen(false);
             }}
           >
-            <Image src={images.logo02} objectFit="contain" width={32} height={32} alt="logo" />
+            <Image src={logo02} objectFit="contain" width={32} height={32} alt="logo" />
           </div>
         </Link>
       </div>
@@ -163,7 +165,7 @@ const Navbar = () => {
         {!isOpen
           ? (
             <Image
-              src={images.menu}
+              src={menu}
               objectFit="contain"
               width={25}
               height={25}
@@ -174,7 +176,7 @@ const Navbar = () => {
           )
           : (
             <Image
-              src={images.cross}
+              src={cross}
               objectFit="contain"
               width={20}
               height={20}

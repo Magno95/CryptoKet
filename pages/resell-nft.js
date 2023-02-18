@@ -5,9 +5,6 @@ import axios from 'axios';
 import { Loader, Button, Input } from '../components';
 import { NFTContext } from '../context/NFTContext';
 
-// import images from '../assets';
-// import { shortenAddress } from '../utils';
-
 const ResellNFT = () => {
   const { createSale, isLoadingNFTs } = useContext(NFTContext);
   const router = useRouter();
