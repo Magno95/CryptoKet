@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes';
 import { NFTProvider } from '@/context/NFTContext';
 import '@/styles/globals.css';
 import { Footer, Navbar } from '@/components';
-
+//
 const App = ({ Component, pageProps }) => (
   <NFTProvider>
     <ThemeProvider attribute="class">
